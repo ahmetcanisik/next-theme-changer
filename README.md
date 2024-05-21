@@ -6,9 +6,18 @@
 
 ## How to use
 
-- install requirements.txt
+- install  `requirements.txt`
 
-- Edit the tailwind.config.js file as follows
+```bash
+# Include the following in your project.
+ - npm create-next-app
+# Make sure to include tailwindcss when downloading
+
+- npm i @heroicons/react
+- npm i next-themes
+```
+
+- Edit the `tailwind.config.js` file as follows
 
 ```javascript
 module.exports = {
@@ -26,7 +35,7 @@ module.exports = {
 };
 ```
 
-- /app/providers.jsx
+- `/app/providers.jsx`
 
 ```javascript
 'use client'
@@ -38,7 +47,7 @@ export default function Providers({ children }) {
 }
 ```
 
-- /app/components/ThemeButton.jsx
+- `/app/components/ThemeButton.jsx`
 
 ```javascript
 'use client'
@@ -78,7 +87,7 @@ export default ThemeButton
 
 ```
 
-- and update layout.js
+- and update `/app/layout.js`
 
 ```javascript
 import Providers from "@/app/providers";
