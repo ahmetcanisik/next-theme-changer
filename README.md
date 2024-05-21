@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Add ThemeChanger to Next-App
 
-First, run the development server:
+## This project just provides an idea of ​​what will be applied where. Include the project in the nextjs project you created.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## How to use
+
+- install requirements.txt
+
+- Edit the tailwind.config.js file as follows
+
+```javascript
+module.exports = {
+  content: [
+    //...
+  ],
+
+  // add this line your tailwind.config.js
+  darkMode: 'class',
+
+  theme: {
+    //...
+  },
+  plugins: [],
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- /app/providers.jsx
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```javascript
+'use client'
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+import { ThemeProvider } from 'next-themes'
 
-## Learn More
+export default function Providers({ children }) {
+    return <ThemeProvider attribute='class'>{children}</ThemeProvider>
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+- /app/components/ThemeButton.jsx
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```javascript
+'use client'
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
-## Deploy on Vercel
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+const ThemeButton = () => {
+    const { resolvedTheme, setTheme } = useTheme()
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => setMounted(true), [])
+
+    if (!mounted) {
+        return null
+    }
+
+    return (
+        <button
+            aria-label='Toggle Dark Mode'
+            type='button'
+            className='flex items-center justify-center rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700'
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+        >
+            {resolvedTheme === 'dark' ? (
+                <SunIcon className='h-5 w-5 text-orange-300' />
+            ) : (
+                <MoonIcon className='h-5 w-5 text-slate-800' />
+            )}
+        </button>
+    )
+}
+
+export default ThemeButton
+
+```
+
+- and update layout.js
+
+```javascript
+import Providers from "@/app/providers";
+import ThemeButton from "@/app/components/ThemeButton";
+
+export default function RootLayout({children}) {
+    return (
+        <html lang="en">
+        <body>
+        <Providers>
+            <header>
+                <ThemeButton/>
+            </header>
+            {children}
+        </Providers>
+        </body>
+        </html>
+    );
+}
+
+```
