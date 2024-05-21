@@ -100,3 +100,6 @@ export default function RootLayout({children}) {
 }
 
 ```
+
+
+by ahmetcanisik
