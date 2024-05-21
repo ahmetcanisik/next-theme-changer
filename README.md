@@ -23,7 +23,6 @@
 ```
 
 <br>
-<hr>
 <br>
 
 - Edit the `tailwind.config.js` file as follows
@@ -45,7 +44,6 @@ module.exports = {
 ```
 
 <br>
-<hr>
 <br>
 
 - `/app/providers.jsx`
@@ -61,7 +59,6 @@ export default function Providers({ children }) {
 ```
 
 <br>
-<hr>
 <br>
 
 - `/app/components/ThemeButton.jsx`
@@ -105,7 +102,6 @@ export default ThemeButton
 ```
 
 <br>
-<hr>
 <br>
 
 - and update `/app/layout.js`
