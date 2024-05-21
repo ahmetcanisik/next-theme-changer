@@ -1,10 +1,15 @@
 
 # Add ThemeChanger to Next-App
 
+<br>
+
 ## This project just provides an idea of ​​what will be applied where. Include the project in the nextjs project you created.
 
+<br>
 
 ## How to use
+
+<br>
 
 - install  `requirements.txt`
 
@@ -16,6 +21,9 @@
 - npm i @heroicons/react
 - npm i next-themes
 ```
+
+---
+<br>
 
 - Edit the `tailwind.config.js` file as follows
 
@@ -35,6 +43,9 @@ module.exports = {
 };
 ```
 
+---
+<br>
+
 - `/app/providers.jsx`
 
 ```javascript
@@ -46,6 +57,9 @@ export default function Providers({ children }) {
     return <ThemeProvider attribute='class'>{children}</ThemeProvider>
 }
 ```
+
+---
+<br>
 
 - `/app/components/ThemeButton.jsx`
 
@@ -86,6 +100,9 @@ const ThemeButton = () => {
 export default ThemeButton
 
 ```
+
+---
+<br>
 
 - and update `/app/layout.js`
 
