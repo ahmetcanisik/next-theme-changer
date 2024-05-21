@@ -1,0 +1,6 @@
+Include the following in your project.
+ - npm create-next-app
+# Make sure to include tailwindcss when downloading
+
+- npm i @heroicons/react
+- npm i next-themes
