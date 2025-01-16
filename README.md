@@ -3,7 +3,7 @@
 
 <br>
 
-## This project just provides an idea of ​​what will be applied where. Include the project in the nextjs project you created.
+This project just provides an idea of ​​what will be applied where. Include the project in the nextjs project you created.
 
 <br>
 
